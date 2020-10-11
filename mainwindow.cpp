@@ -14,19 +14,10 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , dbPath(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/database.db")
 {
     ui->setupUi(this);
 
-    this->dbConnection = QSqlDatabase::addDatabase("QSQLITE");
-    dbConnection.setDatabaseName(dbPath);
-
-    if (!QDir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)).exists())
-        QDir().mkdir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
-
-    ui->statusbar->showMessage(dbConnection.open()
-                               ? "Connected to " + dbPath
-                               : "Failed to connect to database");
+    this->connectToDatabase();
 
     if (dbConnection.open()) {
         QSqlQuery sqlQuery(dbConnection);
@@ -43,6 +34,31 @@ MainWindow::~MainWindow()
 {
     delete ui;
 
+}
+
+void MainWindow::connectToDatabase()
+{
+    this->dbConnection = QSqlDatabase::addDatabase("QSQLITE");
+
+    QString appDataLocation = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
+
+    if (!QDir(appDataLocation).exists())
+        QDir().mkdir(appDataLocation);
+
+    dbConnection.setDatabaseName(appDataLocation + "/database.db");
+
+    ui->statusbar->showMessage(dbConnection.open()
+                               ? "Connected to database"
+                               : "Failed to connect to database");
+}
+
+void MainWindow::createCategoryTable(QSqlDatabase dbConnection)
+{
+    QSqlQuery sqlQuery(dbConnection);
+    if (!sqlQuery.exec("CREATE TABLE IF NOT EXISTS categories("
+                       "category_id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                       "name TEXT NOT NULL UNIQUE);"))
+        ui->statusbar->showMessage("Failed to create Category database");
 }
 
 

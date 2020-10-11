@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QMainWindow>
-#include <QString>
 #include <QSqlDatabase>
 
 QT_BEGIN_NAMESPACE
@@ -16,6 +15,10 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private:
+    void connectToDatabase();
+    void createCategoryTable(QSqlDatabase dbConnection);
+
 private slots:
     void on_actionEvent_triggered();
 
@@ -27,6 +30,5 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    const QString dbPath;
     QSqlDatabase dbConnection;
 };
