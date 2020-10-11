@@ -11,14 +11,17 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    newcategorydialog.cpp \
     neweventdialog.cpp
 
 HEADERS += \
     mainwindow.h \
+    newcategorydialog.h \
     neweventdialog.h
 
 FORMS += \
     mainwindow.ui \
+    newcategorydialog.ui \
     neweventdialog.ui
 
 # Default rules for deployment.

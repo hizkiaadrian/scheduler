@@ -2,6 +2,7 @@
 #include "./ui_mainwindow.h"
 //#include "settingsdialog.h"
 #include "neweventdialog.h"
+#include "newcategorydialog.h"
 
 #include <QInputDialog>
 #include <QDir>
@@ -55,25 +56,28 @@ void MainWindow::on_actionEvent_triggered()
 
 void MainWindow::on_actionEvent_Category_triggered()
 {
-    bool ok;
-    QString newCategoryName = QInputDialog::getText(this,
-                                         tr("Add a new event category"),
-                                         tr("Category name:"),
-                                         QLineEdit::Normal,
-                                         QDir::home().dirName(),
-                                         &ok);
+//    bool ok;
+//    QString newCategoryName = QInputDialog::getText(this,
+//                                         tr("Add a new event category"),
+//                                         tr("Category name:"),
+//                                         QLineEdit::Normal,
+//                                         QDir::home().dirName(),
+//                                         &ok);
 
-    if (ok && !newCategoryName.isEmpty()) {
-        QSqlQuery sqlQuery(dbConnection);
-        sqlQuery.prepare("INSERT INTO categories (name)"
-                                      "VALUES (?);");
-        sqlQuery.bindValue(0, newCategoryName);
-        bool inserted = sqlQuery.exec();
+    NewCategoryDialog newCategoryDialog(this->dbConnection);
+    newCategoryDialog.exec();
 
-        ui->statusbar->showMessage(inserted
-                                   ? "Category " + newCategoryName + " added successfully"
-                                   : "Failed to add category to database");
-    }
+//    if (ok && !newCategoryName.isEmpty()) {
+//        QSqlQuery sqlQuery(dbConnection);
+//        sqlQuery.prepare("INSERT INTO categories (name)"
+//                                      "VALUES (?);");
+//        sqlQuery.bindValue(0, newCategoryName);
+//        bool inserted = sqlQuery.exec();
+
+//        ui->statusbar->showMessage(inserted
+//                                   ? "Category " + newCategoryName + " added successfully"
+//                                   : "Failed to add category to database");
+//    }
 
 }
 
