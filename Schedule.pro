@@ -12,17 +12,20 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     newcategorydialog.cpp \
-    neweventdialog.cpp
+    neweventdialog.cpp \
+    settingsdialog.cpp
 
 HEADERS += \
     mainwindow.h \
     newcategorydialog.h \
-    neweventdialog.h
+    neweventdialog.h \
+    settingsdialog.h
 
 FORMS += \
     mainwindow.ui \
     newcategorydialog.ui \
-    neweventdialog.ui
+    neweventdialog.ui \
+    settingsdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -1,8 +1,9 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-//#include "settingsdialog.h"
-#include "neweventdialog.h"
+
 #include "newcategorydialog.h"
+#include "neweventdialog.h"
+#include "settingsdialog.h"
 
 #include <QInputDialog>
 #include <QDir>
@@ -100,8 +101,8 @@ void MainWindow::on_actionEvent_Category_triggered()
 
 void MainWindow::on_actionSettings_triggered()
 {
-//    SettingsDialog settingsDialog;
-//    settingsDialog.exec();
+    SettingsDialog settingsDialog;
+    settingsDialog.exec();
 
 }
 
