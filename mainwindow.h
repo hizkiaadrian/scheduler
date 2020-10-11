@@ -15,10 +15,6 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-private:
-    void connectToDatabase();
-    void createCategoryTable(QSqlDatabase dbConnection);
-
 private slots:
     void on_actionEvent_triggered();
 

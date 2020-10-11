@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 
 #include <QApplication>
+#include <QSqlDatabase>
+
+QSqlDatabase* dbConnectionPtr;
 
 int main(int argc, char *argv[])
 {

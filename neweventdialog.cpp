@@ -1,24 +1,22 @@
 #include "neweventdialog.h"
 #include "./ui_neweventdialog.h"
 
+#include "eventcategory.h"
+
 #include <QSqlQuery>
 
-NewEventDialog::NewEventDialog(QSqlDatabase dbConnection, QWidget *parent) :
+NewEventDialog::NewEventDialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::NewEventDialog),
-    dbConnection(dbConnection)
+    ui(new Ui::NewEventDialog)
 {
     ui->setupUi(this);
 
-    QSqlQuery query(dbConnection);
-    query.exec("SELECT name FROM categories");
-    while (query.next()) {
-        ui->comboBox->addItem(query.value(0).toString());
-    }
+    ui->comboBox->addItems(EventCategory::getAllCategories());
 
 }
 
 NewEventDialog::~NewEventDialog()
 {
     delete ui;
+
 }
