@@ -21,6 +21,5 @@ public:
 
 private:
     Ui::NewEventDialog *ui;
-    const QString windowTitle;
     const QSqlDatabase dbConnection;
 };

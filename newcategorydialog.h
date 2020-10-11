@@ -22,6 +22,5 @@ private slots:
 
 private:
     Ui::NewCategoryDialog *ui;
-    const QString windowTitle;
     const QSqlDatabase dbConnection;
 };

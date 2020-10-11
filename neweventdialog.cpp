@@ -6,12 +6,9 @@
 NewEventDialog::NewEventDialog(QSqlDatabase dbConnection, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::NewEventDialog),
-    windowTitle("Add a new event"),
     dbConnection(dbConnection)
 {
     ui->setupUi(this);
-
-    this->setWindowTitle(windowTitle);
 
     QSqlQuery query(dbConnection);
     query.exec("SELECT name FROM categories");

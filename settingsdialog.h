@@ -16,5 +16,4 @@ public:
 
 private:
     Ui::SettingsDialog *ui;
-    const QString windowTitle;
 };
