@@ -1,11 +1,15 @@
 #include "newcategorydialog.h"
 #include "ui_newcategorydialog.h"
 #include "eventcategory.h"
+#include "messagetype.h"
+#include "utils.h"
 
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QDebug>
 #include <QPushButton>
+#include <QStyle>
+
 
 NewCategoryDialog::NewCategoryDialog(QWidget *parent) :
     QDialog(parent),
@@ -23,17 +27,21 @@ NewCategoryDialog::~NewCategoryDialog()
 
 }
 
-
 void NewCategoryDialog::on_lineEdit_textEdited(const QString &value)
 {
-    if(value.isEmpty())
+    if(value.isEmpty()){
+        showMessage(ui->label, "\u2717 Cannot be empty", MessageError);
         ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
-    else if (EventCategory::getAllCategories().contains(value)){
-        ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
-        qDebug() << "Category exists";
     }
-    else
+    else if (EventCategory::getAllCategories().contains(value)){
+        showMessage(ui->label, "\u2717 Category already exists", MessageError);
+        ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
+    }
+    else {
+        showMessage(ui->label, "\u2713 OK", MessageOK);
         ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
+    }
+
 }
 
 

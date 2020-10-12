@@ -5,15 +5,13 @@
 #include "neweventdialog.h"
 #include "settingsdialog.h"
 #include "eventcategory.h"
+#include "utils.h"
 
 #include <QDir>
 #include <QSqlDatabase>
 #include <QStandardPaths>
 
 extern QSqlDatabase* dbConnectionPtr;
-
-void connectToDatabase(QString dbFolder, QSqlDatabase &dbConnection);
-
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -69,17 +67,5 @@ void MainWindow::on_actionSettings_triggered()
 void MainWindow::on_actionExit_triggered()
 {
     QApplication::quit();
-
-}
-
-
-void connectToDatabase(QString dbFolder, QSqlDatabase &dbConnection)
-{
-    dbConnection = QSqlDatabase::addDatabase("QSQLITE");
-
-    if (!QDir(dbFolder).exists())
-        QDir().mkdir(dbFolder);
-
-    dbConnection.setDatabaseName(dbFolder + "/database.db");
 
 }
