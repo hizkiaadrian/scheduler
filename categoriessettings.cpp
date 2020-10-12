@@ -23,5 +23,15 @@ CategoriesSettings::~CategoriesSettings()
 void CategoriesSettings::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
 {
     EditCategoryDialog editCategoryDialog(item->text());
+    connect(&editCategoryDialog, SIGNAL(deleteSuccessful()), this, SLOT(refreshCategories()));
     editCategoryDialog.exec();
+
+}
+
+void CategoriesSettings::refreshCategories() {
+
+    categories = EventCategory::getAllCategories();
+
+    ui->listWidget->clear();
+    ui->listWidget->addItems(categories);
 }

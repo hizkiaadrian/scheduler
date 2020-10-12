@@ -13,4 +13,5 @@ public:
 
     static QStringList getAllCategories();
 
+    static bool deleteCategory(QString category);
 };

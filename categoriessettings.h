@@ -19,6 +19,8 @@ public:
 private slots:
     void on_listWidget_itemDoubleClicked(QListWidgetItem *item);
 
+    void refreshCategories();
+
 private:
     Ui::categoriesSettings *ui;
     QStringList categories;

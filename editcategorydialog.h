@@ -1,5 +1,4 @@
-#ifndef EDITCATEGORYDIALOG_H
-#define EDITCATEGORYDIALOG_H
+#pragma once
 
 #include <QDialog>
 
@@ -15,9 +14,14 @@ public:
     explicit EditCategoryDialog(QString category, QWidget *parent = nullptr);
     ~EditCategoryDialog();
 
+private slots:
+    void on_deleteButton_clicked();
+
+signals:
+    void deleteSuccessful();
+
 private:
     Ui::EditCategoryDialog *ui;
+    const QStringList existingCategories;
     const QString category;
 };
-
-#endif // EDITCATEGORYDIALOG_H

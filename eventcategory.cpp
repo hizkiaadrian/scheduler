@@ -39,3 +39,14 @@ QStringList EventCategory::getAllCategories() {
 
     return categories;
 }
+
+
+bool EventCategory::deleteCategory(QString category) {
+    QSqlQuery sqlQuery(*dbConnectionPtr);
+
+    sqlQuery.prepare("DELETE FROM categories WHERE name = :name");
+    sqlQuery.bindValue(":name", category);
+
+    return sqlQuery.exec();
+
+}
