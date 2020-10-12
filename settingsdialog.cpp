@@ -1,5 +1,6 @@
 #include "settingsdialog.h"
 #include "ui_settingsdialog.h"
+#include "categoriessettings.h"
 #include <QVBoxLayout>
 
 SettingsDialog::SettingsDialog(QWidget *parent) :
@@ -8,7 +9,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->tabWidget->addTab(new QWidget(), "Categories");
+    ui->tabWidget->addTab(new CategoriesSettings, "Categories");
 
 }
 

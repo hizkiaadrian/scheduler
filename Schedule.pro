@@ -5,6 +5,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets sql
 CONFIG += c++11
 
 SOURCES += \
+    categoriessettings.cpp \
     eventcategory.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -14,6 +15,7 @@ SOURCES += \
     utils.cpp
 
 HEADERS += \
+    categoriessettings.h \
     eventcategory.h \
     mainwindow.h \
     messagetype.h \
@@ -23,6 +25,7 @@ HEADERS += \
     utils.h
 
 FORMS += \
+    categoriessettings.ui \
     mainwindow.ui \
     newcategorydialog.ui \
     neweventdialog.ui \
