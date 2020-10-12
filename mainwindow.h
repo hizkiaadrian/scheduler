@@ -24,6 +24,8 @@ private slots:
 
     void on_actionExit_triggered();
 
+    void setStatusBarText(const QString&);
+
 private:
     Ui::MainWindow *ui;
     QSqlDatabase dbConnection;

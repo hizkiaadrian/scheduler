@@ -65,4 +65,7 @@
  </widget>
  <resources/>
  <connections/>
+ <slots>
+  <slot>setStatusBarText(QString)</slot>
+ </slots>
 </ui>

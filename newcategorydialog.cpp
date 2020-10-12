@@ -52,7 +52,10 @@ void NewCategoryDialog::on_lineEdit_textEdited(const QString &value)
 
 void NewCategoryDialog::on_buttonBox_accepted()
 {
-    if(EventCategory::addNewCategory(ui->lineEdit->text()))
-        qDebug() << "Category " + ui->lineEdit->text() + " added successfully";
+    bool addCategorySuccess = EventCategory::addNewCategory(ui->lineEdit->text());
+
+    if(addCategorySuccess) {
+        emit formSubmitted("Category " + ui->lineEdit->text() + " added successfully");
+    }
 
 }

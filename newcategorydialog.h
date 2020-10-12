@@ -21,6 +21,10 @@ private slots:
 
     void on_lineEdit_textEdited(const QString &value);
 
+signals:
+    void formSubmitted(const QString&);
+
 private:
     Ui::NewCategoryDialog *ui;
+    QStringList categories;
 };

@@ -50,9 +50,11 @@ void MainWindow::on_actionEvent_triggered()
 
 void MainWindow::on_actionEvent_Category_triggered()
 {
-    NewCategoryDialog newCategoryDialog;
-    newCategoryDialog.exec();
+    NewCategoryDialog newCategoryDialog(this);
 
+    connect(&newCategoryDialog, SIGNAL(formSubmitted(QString)), this, SLOT(setStatusBarText(QString)));
+
+    newCategoryDialog.exec();
 }
 
 
@@ -68,4 +70,9 @@ void MainWindow::on_actionExit_triggered()
 {
     QApplication::quit();
 
+}
+
+void MainWindow::setStatusBarText(const QString& text)
+{
+    ui->statusbar->showMessage(text);
 }

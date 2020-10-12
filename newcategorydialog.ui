@@ -84,4 +84,7 @@
    </hints>
   </connection>
  </connections>
+ <slots>
+  <signal>formSubmitted(QString)</signal>
+ </slots>
 </ui>
