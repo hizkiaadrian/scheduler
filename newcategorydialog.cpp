@@ -5,6 +5,7 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QDebug>
+#include <QPushButton>
 
 NewCategoryDialog::NewCategoryDialog(QWidget *parent) :
     QDialog(parent),
@@ -12,6 +13,8 @@ NewCategoryDialog::NewCategoryDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->lineEdit->setPlaceholderText("Type a category name...");
+    ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
 }
 
 NewCategoryDialog::~NewCategoryDialog()
@@ -20,7 +23,19 @@ NewCategoryDialog::~NewCategoryDialog()
 
 }
 
-void NewCategoryDialog::on_lineEdit_editingFinished(){}
+
+void NewCategoryDialog::on_lineEdit_textEdited(const QString &value)
+{
+    if(value.isEmpty())
+        ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
+    else if (EventCategory::getAllCategories().contains(value)){
+        ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
+        qDebug() << "Category exists";
+    }
+    else
+        ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
+}
+
 
 void NewCategoryDialog::on_buttonBox_accepted()
 {

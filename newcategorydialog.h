@@ -17,9 +17,9 @@ public:
 
 private slots:
 
-    void on_lineEdit_editingFinished();
-
     void on_buttonBox_accepted();
+
+    void on_lineEdit_textEdited(const QString &value);
 
 private:
     Ui::NewCategoryDialog *ui;

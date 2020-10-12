@@ -16,12 +16,12 @@ bool EventCategory::createCategoryTable() {
 }
 
 
-bool EventCategory::addNewCategory(QString category) {
+bool EventCategory::addNewCategory(QString newCategoryName) {
     QSqlQuery sqlQuery(*dbConnectionPtr);
 
     sqlQuery.prepare("INSERT INTO categories (name)"
                      "VALUES (?);");
-    sqlQuery.bindValue(0, category);
+    sqlQuery.bindValue(0, newCategoryName);
 
     return sqlQuery.exec();
 

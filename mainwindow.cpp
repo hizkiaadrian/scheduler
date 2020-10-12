@@ -14,6 +14,7 @@ extern QSqlDatabase* dbConnectionPtr;
 
 void connectToDatabase(QString dbFolder, QSqlDatabase &dbConnection);
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -80,4 +81,5 @@ void connectToDatabase(QString dbFolder, QSqlDatabase &dbConnection)
         QDir().mkdir(dbFolder);
 
     dbConnection.setDatabaseName(dbFolder + "/database.db");
+
 }
