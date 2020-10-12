@@ -13,9 +13,14 @@
 
 NewCategoryDialog::NewCategoryDialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::NewCategoryDialog)
+    ui(new Ui::NewCategoryDialog),
+    categories(EventCategory::getAllCategories())
 {
     ui->setupUi(this);
+
+    for (QString& category: categories) {
+        category = category.toLower();
+    }
 
     ui->lineEdit->setPlaceholderText("Type a category name...");
     ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
@@ -33,7 +38,7 @@ void NewCategoryDialog::on_lineEdit_textEdited(const QString &value)
         showMessage(ui->label, "\u2717 Cannot be empty", MessageError);
         ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
     }
-    else if (EventCategory::getAllCategories().contains(value)){
+    else if (categories.contains(value.toLower())){
         showMessage(ui->label, "\u2717 Category already exists", MessageError);
         ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
     }
