@@ -6,6 +6,7 @@ CONFIG += c++11
 
 SOURCES += \
     categoriessettings.cpp \
+    editcategorydialog.cpp \
     eventcategory.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -16,6 +17,7 @@ SOURCES += \
 
 HEADERS += \
     categoriessettings.h \
+    editcategorydialog.h \
     eventcategory.h \
     mainwindow.h \
     messagetype.h \
@@ -26,6 +28,7 @@ HEADERS += \
 
 FORMS += \
     categoriessettings.ui \
+    editcategorydialog.ui \
     mainwindow.ui \
     newcategorydialog.ui \
     neweventdialog.ui \
