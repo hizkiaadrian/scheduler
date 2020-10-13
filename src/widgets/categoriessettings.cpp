@@ -1,8 +1,10 @@
 #include "eventcategory.h"
 #include "widgets/editcategorydialog.h"
 #include "widgets/categoriessettings.h"
+#include "widgets/mainwindow.h"
 #include "ui_categoriessettings.h"
 
+extern MainWindow* mainWindowPtr;
 
 CategoriesSettings::CategoriesSettings(QWidget *parent) :
     QWidget(parent),
@@ -28,7 +30,7 @@ void CategoriesSettings::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
     connect(&editCategoryDialog, SIGNAL(categoriesModified(QString)), this, SLOT(refreshCategories()));
     connect(&editCategoryDialog,
             SIGNAL(categoriesModified(QString)),
-            this->parent()->parent()->parent()->parent(),
+            mainWindowPtr,
             SLOT(setStatusBarText(QString)));
     editCategoryDialog.exec();
 

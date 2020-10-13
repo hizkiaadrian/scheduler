@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QDialog>
+#include <QMap>
 
 namespace Ui {
 class NewEventDialog;
@@ -14,15 +15,21 @@ public:
     explicit NewEventDialog(QWidget *parent = nullptr);
     ~NewEventDialog();
 
+private:
+    void setDefaultDateTime();
+    QDateTime calculateReminderTime(QDateTime startDateTime, int minutes);
+
 private slots:
-    void on_eventTitleLineEdit_textEdited(const QString &arg1);
-
-    void on_categoryComboBox_currentIndexChanged(int index);
-
-    void on_remindMeBox_currentIndexChanged(int index);
+    void enableIfValid();
 
     void on_buttonBox_accepted();
 
+    void on_buttonBox_rejected();
+
+signals:
+    void newEventAdded(const QString& value);
+
 private:
     Ui::NewEventDialog *ui;
+    QMap<int, QString> reminderChoices;
 };

@@ -13,6 +13,7 @@
 
 
 extern QSqlDatabase* dbConnectionPtr;
+MainWindow* mainWindowPtr;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -32,6 +33,9 @@ MainWindow::MainWindow(QWidget *parent)
         EventCategory::createCategoryTable();
         Event::createEventTable();
     }
+
+    mainWindowPtr = this;
+
 }
 
 
@@ -44,7 +48,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionEvent_triggered()
 {
-    NewEventDialog newEventDialog;
+    NewEventDialog newEventDialog(this);
+
+    connect(&newEventDialog, SIGNAL(newEventAdded(QString)), this, SLOT(setStatusBarText(QString)));
+
     newEventDialog.exec();
 
 }
@@ -57,6 +64,7 @@ void MainWindow::on_actionEvent_Category_triggered()
     connect(&newCategoryDialog, SIGNAL(formSubmitted(QString)), this, SLOT(setStatusBarText(QString)));
 
     newCategoryDialog.exec();
+
 }
 
 

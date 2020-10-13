@@ -135,7 +135,8 @@
  </widget>
  <resources/>
  <connections/>
- <buttongroups>
-  <buttongroup name="frequencyGroup"/>
- </buttongroups>
+ <slots>
+  <signal>newEventAdded(QString)</signal>
+  <slot>enableIfValid()</slot>
+ </slots>
 </ui>

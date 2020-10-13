@@ -13,26 +13,30 @@ NewEventDialog::NewEventDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    reminderChoices[0] = "Never";
+    reminderChoices[10] = "10 minutes before";
+    reminderChoices[30] = "30 minutes before";
+    reminderChoices[60] = "1 hour before";
+    reminderChoices[24 * 60] = "1 day before";
+
     ui->categoryComboBox->setPlaceholderText("--Select category--");
     ui->categoryComboBox->setCurrentIndex(-1);
     ui->categoryComboBox->addItems(EventCategory::getAllCategories());
 
-    ui->startDateEdit->setDate(QDate::currentDate());
-    ui->startTimeEdit->setTime(QTime::currentTime());
-    ui->endDateEdit->setDate(QDate::currentDate());
-    ui->endTimeEdit->setTime(QTime::currentTime());
-
     ui->remindMeBox->setPlaceholderText("--Set reminder--");
     ui->remindMeBox->setCurrentIndex(-1);
-    ui->remindMeBox->addItem("Never");
-    ui->remindMeBox->addItem("10 minutes before");
-    ui->remindMeBox->addItem("30 minutes before");
-    ui->remindMeBox->addItem("1 hour before");
-    ui->remindMeBox->addItem("1 day before");
+    foreach (QString value, reminderChoices) ui->remindMeBox->addItem(value);
+
+    setDefaultDateTime();
 
     ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
 
+    connect(ui->eventTitleLineEdit, SIGNAL(textEdited(QString)), this, SLOT(enableIfValid()));
+    connect(ui->remindMeBox, SIGNAL(currentIndexChanged(int)), this, SLOT(enableIfValid()));
+    connect(ui->categoryComboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(enableIfValid()));
+
 }
+
 
 NewEventDialog::~NewEventDialog()
 {
@@ -40,31 +44,21 @@ NewEventDialog::~NewEventDialog()
 
 }
 
-void NewEventDialog::on_eventTitleLineEdit_textEdited(const QString &value)
-{
-    if (!value.isEmpty() && ui->remindMeBox->currentIndex() >= 0 && ui->categoryComboBox->currentIndex() >= 0)
-        ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
-    else
-        ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
 
+void NewEventDialog::setDefaultDateTime() {
+    QDateTime defaultStartDateTime = QDateTime::currentDateTime();
+    QDateTime defaultEndDateTime = QDateTime::currentDateTime().addSecs(60 * 60);
+
+    ui->startDateEdit->setDate(defaultStartDateTime.date());
+    ui->startTimeEdit->setTime(defaultStartDateTime.time());
+    ui->endDateEdit->setDate(defaultEndDateTime.date());
+    ui->endTimeEdit->setTime(defaultEndDateTime.time());
 }
 
 
-void NewEventDialog::on_categoryComboBox_currentIndexChanged(int index)
-{
-    if (index >= 0 && !ui->eventTitleLineEdit->text().isEmpty() && ui->categoryComboBox->currentIndex() >= 0)
-        ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
-    else
-        ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
-}
+QDateTime NewEventDialog::calculateReminderTime(QDateTime startDateTime, int minutes) {
+    return startDateTime.addSecs(- minutes * 60);
 
-
-void NewEventDialog::on_remindMeBox_currentIndexChanged(int index)
-{
-    if (index >= 0 && !ui->eventTitleLineEdit->text().isEmpty() && ui->remindMeBox->currentIndex() >= 0)
-        ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(true);
-    else
-        ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(false);
 }
 
 
@@ -73,29 +67,8 @@ void NewEventDialog::on_buttonBox_accepted()
     QDateTime startDateTime(ui->startDateEdit->date(), ui->startTimeEdit->time());
     QDateTime endDateTime(ui->endDateEdit->date(), ui->endDateEdit->time());
 
-    QDateTime reminderTime;
-    switch (ui->remindMeBox->currentIndex()) {
-    case 0:
-        reminderTime = startDateTime;
-        break;
-
-    case 1:
-        reminderTime = startDateTime.addSecs(-10 * 60);
-        break;
-
-    case 2:
-        reminderTime = startDateTime.addSecs(-30 * 60);
-        break;
-
-    case 3:
-        reminderTime = startDateTime.addSecs(-60 * 60);
-        break;
-
-    case 4:
-        reminderTime = startDateTime.addDays(-1);
-        break;
-
-    }
+    QDateTime reminderTime = calculateReminderTime(startDateTime,
+                                                   reminderChoices.key(ui->remindMeBox->currentText()));
 
     Event event(ui->eventTitleLineEdit->text(),
                 ui->categoryComboBox->currentText(),
@@ -105,6 +78,25 @@ void NewEventDialog::on_buttonBox_accepted()
                 reminderTime,
                 ui->remarksTextEdit->toPlainText());
 
-    if (event.saveToDatabase()) this->close();
+    if (event.saveToDatabase()) {
+        emit newEventAdded("Event " + ui->eventTitleLineEdit->text() + " added successfully");
+        this->close();
+    }
+
+}
+
+void NewEventDialog::on_buttonBox_rejected()
+{
+    this->close();
+
+}
+
+
+void NewEventDialog::enableIfValid() {
+    bool isFormValid = !ui->eventTitleLineEdit->text().isEmpty()
+            && ui->remindMeBox->currentIndex() >= 0
+            && ui->categoryComboBox->currentIndex() >= 0;
+
+    ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(isFormValid);
 
 }
