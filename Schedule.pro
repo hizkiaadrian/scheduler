@@ -5,34 +5,36 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets sql
 CONFIG += c++11
 
 SOURCES += \
-    categoriessettings.cpp \
-    editcategorydialog.cpp \
-    eventcategory.cpp \
     main.cpp \
-    mainwindow.cpp \
-    newcategorydialog.cpp \
-    neweventdialog.cpp \
-    settingsdialog.cpp \
-    utils.cpp
+    src/eventcategory.cpp \
+    src/utils.cpp \
+    src/widgets/categoriessettings.cpp \
+    src/widgets/editcategorydialog.cpp \
+    src/widgets/mainwindow.cpp \
+    src/widgets/newcategorydialog.cpp \
+    src/widgets/neweventdialog.cpp \
+    src/widgets/settingsdialog.cpp
+
 
 HEADERS += \
-    categoriessettings.h \
-    editcategorydialog.h \
-    eventcategory.h \
-    mainwindow.h \
-    messagetype.h \
-    newcategorydialog.h \
-    neweventdialog.h \
-    settingsdialog.h \
-    utils.h
+    include/eventcategory.h \
+    include/messagetype.h \
+    include/utils.h \
+    include/widgets/categoriessettings.h \
+    include/widgets/editcategorydialog.h \
+    include/widgets/mainwindow.h \
+    include/widgets/newcategorydialog.h \
+    include/widgets/neweventdialog.h \
+    include/widgets/settingsdialog.h
+
 
 FORMS += \
-    categoriessettings.ui \
-    editcategorydialog.ui \
-    mainwindow.ui \
-    newcategorydialog.ui \
-    neweventdialog.ui \
-    settingsdialog.ui
+    forms/categoriessettings.ui \
+    forms/editcategorydialog.ui \
+    forms/mainwindow.ui \
+    forms/newcategorydialog.ui \
+    forms/neweventdialog.ui \
+    forms/settingsdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
