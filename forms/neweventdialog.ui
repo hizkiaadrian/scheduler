@@ -32,129 +32,97 @@
       <number>20</number>
      </property>
      <item row="0" column="0">
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="eventTitleLabel">
        <property name="text">
         <string>Event Title</string>
        </property>
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="eventTitleLineEdit"/>
      </item>
      <item row="1" column="0">
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="categoryLabel">
        <property name="text">
         <string>Category</string>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QComboBox" name="comboBox"/>
+      <widget class="QComboBox" name="categoryComboBox"/>
      </item>
      <item row="2" column="0" colspan="2">
-      <widget class="Line" name="line">
+      <widget class="Line" name="horizontalSeparator">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
       </widget>
      </item>
      <item row="3" column="0">
-      <widget class="QLabel" name="label_3">
+      <widget class="QLabel" name="startLabel">
        <property name="text">
         <string>Start</string>
        </property>
       </widget>
      </item>
      <item row="3" column="1">
-      <layout class="QHBoxLayout" name="horizontalLayout">
+      <layout class="QHBoxLayout" name="startDateTimeGroup">
        <item>
-        <widget class="QTimeEdit" name="timeEdit"/>
+        <widget class="QDateEdit" name="startDateEdit"/>
        </item>
        <item>
-        <widget class="QDateEdit" name="dateEdit"/>
+        <widget class="QTimeEdit" name="startTimeEdit"/>
        </item>
       </layout>
      </item>
      <item row="4" column="0">
-      <widget class="QLabel" name="label_4">
+      <widget class="QLabel" name="endLabel">
        <property name="text">
         <string>End</string>
        </property>
       </widget>
      </item>
      <item row="4" column="1">
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <layout class="QHBoxLayout" name="endDateTimeGroup">
        <item>
-        <widget class="QDateEdit" name="dateEdit_2"/>
+        <widget class="QDateEdit" name="endDateEdit"/>
        </item>
        <item>
-        <widget class="QTimeEdit" name="timeEdit_2"/>
+        <widget class="QTimeEdit" name="endTimeEdit"/>
        </item>
       </layout>
      </item>
      <item row="5" column="0">
-      <widget class="QLabel" name="label_5">
+      <widget class="QLabel" name="locationLabel">
        <property name="text">
         <string>Location</string>
        </property>
       </widget>
      </item>
      <item row="5" column="1">
-      <widget class="QLineEdit" name="lineEdit_2"/>
+      <widget class="QLineEdit" name="locationLineEdit"/>
      </item>
      <item row="6" column="0">
-      <widget class="QLabel" name="label_6">
-       <property name="text">
-        <string>Frequency</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="1">
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QRadioButton" name="radioButton">
-         <property name="text">
-          <string>No repeat</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="radioButton_2">
-         <property name="text">
-          <string>Daily</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="radioButton_3">
-         <property name="text">
-          <string>Weekly</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item row="7" column="0">
-      <widget class="QLabel" name="label_7">
+      <widget class="QLabel" name="remindMeLabel">
        <property name="text">
         <string>Remind me</string>
        </property>
       </widget>
      </item>
-     <item row="7" column="1">
-      <widget class="QComboBox" name="comboBox_2"/>
+     <item row="6" column="1">
+      <widget class="QComboBox" name="remindMeBox"/>
      </item>
-     <item row="8" column="0">
-      <widget class="QLabel" name="label_8">
+     <item row="7" column="0">
+      <widget class="QLabel" name="remarksLabel">
        <property name="text">
         <string>Remarks</string>
        </property>
       </widget>
      </item>
-     <item row="8" column="1">
-      <widget class="QTextEdit" name="textEdit"/>
+     <item row="7" column="1">
+      <widget class="QTextEdit" name="remarksTextEdit"/>
      </item>
-     <item row="9" column="0" colspan="2">
+     <item row="8" column="0" colspan="2">
       <widget class="QDialogButtonBox" name="buttonBox">
        <property name="standardButtons">
         <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
@@ -167,4 +135,7 @@
  </widget>
  <resources/>
  <connections/>
+ <buttongroups>
+  <buttongroup name="frequencyGroup"/>
+ </buttongroups>
 </ui>

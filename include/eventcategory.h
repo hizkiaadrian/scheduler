@@ -13,6 +13,8 @@ public:
 
     static QStringList getAllCategories();
 
+    static int getCategoryById(QString category);
+
     static bool deleteCategory(QString category);
 
     static bool updateCategoryName(QString prevName, QString newName);

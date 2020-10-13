@@ -2,6 +2,7 @@
 #include <QSqlDatabase>
 #include <QStandardPaths>
 
+#include "event.h"
 #include "eventcategory.h"
 #include "utils.h"
 #include "widgets/mainwindow.h"
@@ -27,9 +28,10 @@ MainWindow::MainWindow(QWidget *parent)
                                ? "Connected to database"
                                : "Failed to connect to database");
 
-    if (dbConnection.open())
+    if (dbConnection.open()) {
         EventCategory::createCategoryTable();
-
+        Event::createEventTable();
+    }
 }
 
 

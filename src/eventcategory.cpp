@@ -41,6 +41,23 @@ QStringList EventCategory::getAllCategories() {
     return categories;
 }
 
+int EventCategory::getCategoryById(QString category) {
+    int categoryId;
+
+    QSqlQuery sqlQuery(*dbConnectionPtr);
+
+    sqlQuery.prepare("SELECT category_id FROM categories WHERE name = :name");
+    sqlQuery.bindValue(":name", category);
+
+    sqlQuery.exec();
+
+    while (sqlQuery.next())
+        categoryId = sqlQuery.value(0).toInt();
+
+    return categoryId;
+
+}
+
 
 bool EventCategory::deleteCategory(QString category) {
     QSqlQuery sqlQuery(*dbConnectionPtr);

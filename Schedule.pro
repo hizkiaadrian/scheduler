@@ -8,6 +8,7 @@ INCLUDEPATH += include/
 
 SOURCES += \
     main.cpp \
+    src/event.cpp \
     src/eventcategory.cpp \
     src/utils.cpp \
     src/widgets/categoriessettings.cpp \
@@ -19,6 +20,7 @@ SOURCES += \
 
 
 HEADERS += \
+    include/event.h \
     include/eventcategory.h \
     include/messagetype.h \
     include/utils.h \
