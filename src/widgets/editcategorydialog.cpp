@@ -1,6 +1,7 @@
-#include "editcategorydialog.h"
-#include "ui_editcategorydialog.h"
 #include "eventcategory.h"
+#include "widgets/editcategorydialog.h"
+#include "ui_editcategorydialog.h"
+
 
 EditCategoryDialog::EditCategoryDialog(QString category, QWidget *parent) :
     QDialog(parent),

@@ -1,5 +1,4 @@
-#ifndef CATEGORIESSETTINGS_H
-#define CATEGORIESSETTINGS_H
+#pragma once
 
 #include <QWidget>
 #include <QListWidgetItem>
@@ -25,5 +24,3 @@ private:
     Ui::categoriesSettings *ui;
     QStringList categories;
 };
-
-#endif // CATEGORIESSETTINGS_H

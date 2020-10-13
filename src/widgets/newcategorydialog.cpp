@@ -1,14 +1,14 @@
-#include "newcategorydialog.h"
-#include "ui_newcategorydialog.h"
-#include "eventcategory.h"
-#include "messagetype.h"
-#include "utils.h"
-
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QDebug>
 #include <QPushButton>
 #include <QStyle>
+
+#include "eventcategory.h"
+#include "messagetype.h"
+#include "utils.h"
+#include "widgets/newcategorydialog.h"
+#include "ui_newcategorydialog.h"
 
 
 NewCategoryDialog::NewCategoryDialog(QWidget *parent) :

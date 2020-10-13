@@ -1,7 +1,8 @@
-#include "eventcategory.h"
-
 #include <QSqlQuery>
 #include <QVariant>
+
+#include "eventcategory.h"
+
 
 extern QSqlDatabase* dbConnectionPtr;
 

@@ -1,9 +1,9 @@
-#include "neweventdialog.h"
-#include "./ui_neweventdialog.h"
+#include <QSqlQuery>
 
 #include "eventcategory.h"
+#include "widgets/neweventdialog.h"
+#include "ui_neweventdialog.h"
 
-#include <QSqlQuery>
 
 NewEventDialog::NewEventDialog(QWidget *parent) :
     QDialog(parent),

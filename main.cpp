@@ -1,7 +1,8 @@
-#include "mainwindow.h"
-
 #include <QApplication>
 #include <QSqlDatabase>
+
+#include "widgets/mainwindow.h"
+
 
 QSqlDatabase* dbConnectionPtr;
 

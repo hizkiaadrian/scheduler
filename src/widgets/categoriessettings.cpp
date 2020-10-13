@@ -1,7 +1,8 @@
-#include "categoriessettings.h"
-#include "ui_categoriessettings.h"
 #include "eventcategory.h"
-#include "editcategorydialog.h"
+#include "widgets/editcategorydialog.h"
+#include "widgets/categoriessettings.h"
+#include "ui_categoriessettings.h"
+
 
 CategoriesSettings::CategoriesSettings(QWidget *parent) :
     QWidget(parent),

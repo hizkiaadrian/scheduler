@@ -1,5 +1,7 @@
-#include "utils.h"
 #include <QDir>
+
+#include "utils.h"
+
 
 void connectToDatabase(QString dbFolder, QSqlDatabase &dbConnection)
 {

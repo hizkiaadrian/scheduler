@@ -4,6 +4,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets sql
 
 CONFIG += c++11
 
+INCLUDEPATH += include/
+
 SOURCES += \
     main.cpp \
     src/eventcategory.cpp \

@@ -1,15 +1,15 @@
-#include "mainwindow.h"
-#include "./ui_mainwindow.h"
-
-#include "newcategorydialog.h"
-#include "neweventdialog.h"
-#include "settingsdialog.h"
-#include "eventcategory.h"
-#include "utils.h"
-
 #include <QDir>
 #include <QSqlDatabase>
 #include <QStandardPaths>
+
+#include "eventcategory.h"
+#include "utils.h"
+#include "widgets/mainwindow.h"
+#include "widgets/newcategorydialog.h"
+#include "widgets/neweventdialog.h"
+#include "widgets/settingsdialog.h"
+#include "ui_mainwindow.h"
+
 
 extern QSqlDatabase* dbConnectionPtr;
 

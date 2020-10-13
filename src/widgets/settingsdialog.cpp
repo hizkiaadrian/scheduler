@@ -1,7 +1,8 @@
-#include "settingsdialog.h"
-#include "ui_settingsdialog.h"
-#include "categoriessettings.h"
 #include <QVBoxLayout>
+
+#include "widgets/settingsdialog.h"
+#include "widgets/categoriessettings.h"
+#include "ui_settingsdialog.h"
 
 SettingsDialog::SettingsDialog(QWidget *parent) :
     QDialog(parent),
