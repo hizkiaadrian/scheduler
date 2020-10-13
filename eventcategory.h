@@ -14,4 +14,6 @@ public:
     static QStringList getAllCategories();
 
     static bool deleteCategory(QString category);
+
+    static bool updateCategoryName(QString prevName, QString newName);
 };

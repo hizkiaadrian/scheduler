@@ -50,3 +50,15 @@ bool EventCategory::deleteCategory(QString category) {
     return sqlQuery.exec();
 
 }
+
+bool EventCategory::updateCategoryName(QString prevName, QString newName)
+{
+    QSqlQuery sqlQuery(*dbConnectionPtr);
+
+    sqlQuery.prepare("UPDATE categories SET name = :newName where name = :prevName");
+    sqlQuery.bindValue(":prevName", prevName);
+    sqlQuery.bindValue(":newName", newName);
+
+    return sqlQuery.exec();
+
+}

@@ -17,8 +17,14 @@ public:
 private slots:
     void on_deleteButton_clicked();
 
+    void on_cancelButton_clicked();
+
+    void on_lineEdit_textEdited(const QString &arg1);
+
+    void on_saveChangesButton_clicked();
+
 signals:
-    void deleteSuccessful();
+    void categoriesModified(const QString&);
 
 private:
     Ui::EditCategoryDialog *ui;

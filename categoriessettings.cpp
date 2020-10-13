@@ -20,10 +20,15 @@ CategoriesSettings::~CategoriesSettings()
 
 }
 
+
 void CategoriesSettings::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
 {
     EditCategoryDialog editCategoryDialog(item->text());
-    connect(&editCategoryDialog, SIGNAL(deleteSuccessful()), this, SLOT(refreshCategories()));
+    connect(&editCategoryDialog, SIGNAL(categoriesModified(QString)), this, SLOT(refreshCategories()));
+    connect(&editCategoryDialog,
+            SIGNAL(categoriesModified(QString)),
+            this->parent()->parent()->parent()->parent(),
+            SLOT(setStatusBarText(QString)));
     editCategoryDialog.exec();
 
 }

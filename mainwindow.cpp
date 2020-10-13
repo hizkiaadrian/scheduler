@@ -60,7 +60,7 @@ void MainWindow::on_actionEvent_Category_triggered()
 
 void MainWindow::on_actionSettings_triggered()
 {
-    SettingsDialog settingsDialog;
+    SettingsDialog settingsDialog(this);
     settingsDialog.exec();
 
 }
