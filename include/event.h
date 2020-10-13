@@ -2,7 +2,7 @@
 
 #include <QDateTime>
 #include <QString>
-
+#include <QVector>
 
 class Event
 {
@@ -16,6 +16,8 @@ public:
           QString remarks);
 
     static bool createEventTable();
+
+    static QVector<Event> getAllEvents();
 
     bool saveToDatabase();
 

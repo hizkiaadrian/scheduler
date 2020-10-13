@@ -41,7 +41,7 @@ QStringList EventCategory::getAllCategories() {
     return categories;
 }
 
-int EventCategory::getCategoryById(QString category) {
+int EventCategory::getCategoryId(QString category) {
     int categoryId;
 
     QSqlQuery sqlQuery(*dbConnectionPtr);
@@ -56,6 +56,18 @@ int EventCategory::getCategoryById(QString category) {
 
     return categoryId;
 
+}
+
+
+QString EventCategory::getCategoryNameById(int categoryId) {
+    QSqlQuery sqlQuery(*dbConnectionPtr);
+
+    sqlQuery.prepare("SELECT name FROM categories WHERE category_id = :id");
+    sqlQuery.bindValue(":id", categoryId);
+
+    sqlQuery.exec();
+
+    return sqlQuery.value(0).toString();
 }
 
 

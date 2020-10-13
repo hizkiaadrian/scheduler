@@ -13,7 +13,9 @@ public:
 
     static QStringList getAllCategories();
 
-    static int getCategoryById(QString category);
+    static int getCategoryId(QString category);
+
+    static QString getCategoryNameById(int categoryId);
 
     static bool deleteCategory(QString category);
 

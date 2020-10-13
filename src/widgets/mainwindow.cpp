@@ -13,7 +13,6 @@
 
 
 extern QSqlDatabase* dbConnectionPtr;
-MainWindow* mainWindowPtr;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -33,8 +32,6 @@ MainWindow::MainWindow(QWidget *parent)
         EventCategory::createCategoryTable();
         Event::createEventTable();
     }
-
-    mainWindowPtr = this;
 
 }
 
